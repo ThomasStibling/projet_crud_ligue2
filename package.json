@@ -1,0 +1,15 @@
+{
+  "name": "stibling_ligue2",
+  "version": "1.0.0",
+  "description": "crud about ligue 2 clubs during 2020/2021 season",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas STIBLING",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.21"
+  }
+}
