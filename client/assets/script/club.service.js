@@ -70,13 +70,42 @@ export class ClubService {
         }
       })
       .then((resource) => {
-        let tmp = new Film(resource._id, resource._name, resource._code, resource._country, resource._logo);
+        let tmp = new Club(resource.id, resource.name, resource.code, resource.country, resource.logo);
         return tmp;
       })
       .catch((error) => {
         console.log(`Error : ${error}`);
       });
   }
+
+
+
+  modif(club) {
+    let url = '/club/' + club._id;
+    let options = {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      cache: 'default',
+      body: JSON.stringify(club)
+    };
+
+    return fetch(url, options)
+      .then((res) => {
+        if(res.ok) {
+          console.log('reussi')
+        }
+      })
+      .catch((error) => {
+        console.log(`Error : ${error}`);
+      });
+  }
+
+
+
 
     remove(id) {
     let url = '/club/' + id;

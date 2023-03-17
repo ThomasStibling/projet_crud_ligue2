@@ -1,30 +1,24 @@
-import { FilmService } from './film.service.js';
-import { Film } from './film.class.js';
+import { ClubService } from './club.service.js';
+import { Club } from './club.class.js';
 
-let titre = document.querySelector('#titre');
-let genre = document.querySelector('#genre');
-let pays = document.querySelector('#pays');
-let date = document.querySelector('#date');
-let resume = document.querySelector('#resume');
-let title = document.querySelector('#title');
+let name = document.querySelector('#name');
+let code = document.querySelector('#code');
+let country = document.querySelector('#country');
 
 let myId = window.location.hash.substring(1);
 
-let F = new FilmService();
-let myFilm = F.get(myId);
-myFilm.then((elt) => {
-  title.innerText =elt.nom;
-  titre.value = elt.nom;
-  genre.value = elt.genre;
-  pays.value = elt.pays;
-  date.value = elt.date;
-  resume.value = elt.synopsis;
-  /* ------------------------------------------ */
-  // le film doit être chargé pour que je le modifie !
+let Cs = new ClubService();
+let cl = Cs.get(myId);
+cl.then((elt) => {
+  name.innerText =elt.name;
+  name.value = elt.name;
+  code.value = elt.code;
+  country.value = elt.country;
+
   let modif = document.querySelector('#modif');
   modif.addEventListener('click', () => {
-    let tmp = new Film(elt._id, titre.value, genre.value, pays.value, date.value, resume.value);
-    F.modif(tmp);
+    let tmp = new Club(elt._id, name.value, code.value, country.value);
+    Cs.modif(tmp);
   });
 });
 

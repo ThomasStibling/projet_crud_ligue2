@@ -34,44 +34,18 @@ app.delete('/club/:id', (req, res) => {
 app.get('/club/:id', (req, res) => {
   let id = req.params.id;
   let club = _ld.find(Clubs, (o) => {
-    return o._id == id;
+    return o.id == id;
   });
   res.send(club);
 });
 
-/*
-app.get('/film/:id', (req, res) => {
+app.put('/club/:id', (req, res) => {
   let id = req.params.id;
-  let film = _.find(Films, (o) => {
-    return o._id == id;
-  });
-  res.send(film);
-});
-
-app.put('/film/:id', (req, res) => {
-  let id = req.params.id;
-  let index = _.findIndex(Films, (o) => {
-    return o._id == id;
+  let index = _ld.findIndex(Clubs, (o) => {
+    return o.id == id;
   });
   // console.log(req.body)
-  Films[index] = req.body;
+  Clubs[index] = req.body;
   // console.log(Films[index])
   res.sendStatus(200);
 });
-
-app.post('/film', (req, res) => {
-  let newFilm = req.body;
-  newFilm._id = uuidv4();
-  // console.log(newFilm);
-  Films.push(newFilm);
-  res.sendStatus(200);
-});
-
-app.delete('/film/:id', (req, res) => {
-  let id = req.params.id;
-  let index = _.findIndex(Films, (o) => {
-    return o._id == id;
-  });
-  Films.splice(index, 1);
-  res.sendStatus(200);
-});*/
