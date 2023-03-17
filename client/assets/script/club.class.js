@@ -1,14 +1,16 @@
 export class Club {
   _id;
-  name;
-  code;
-  country;
+  _name;
+  _code;
+  _country;
+  _logo;
 
-  constructor(id, name, code, country) {
+  constructor(id, name, code, country,logo) {
     this._id = id;
-    this.name = name;
-    this.code = code;
-    this.country = country;
+    this._name = name;
+    this._code = code;
+    this._country = country;
+    this._logo = logo;
   }
 
   get _id() {
@@ -20,27 +22,34 @@ export class Club {
   }
   
   get name() {
-    return this._nom;
+    return this._name;
   }
 
   set name(tmp) {
-    this._nom = tmp;
+    this._name = tmp;
   }
 
   get code() {
-    return this._genre;
+    return this._code;
   }
 
   set code(tmp) {
-    this._genre = tmp;
+    this._code = tmp;
   }
 
   get country() {
-    return this._pays;
+    return this._country;
   }
 
   set country(tmp) {
-    this._pays = tmp;
+    this._country = tmp;
   }
 
+  get logo() {
+    return this._logo;
+  }
+
+  set logo(tmp) {
+    this._logo = tmp;
+  }
 }

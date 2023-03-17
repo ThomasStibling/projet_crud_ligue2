@@ -3,8 +3,7 @@ const app = express();
 
 let port = 3000;
 const Clubs = require('./data/clubs');
-const _ = require('lodash');
-const { v4: uuidv4 } = require('uuid');
+const _ld = require('lodash');
 
 app.use('/assets', express.static('./client/assets'));
 app.use('/pages', express.static('./client/pages'));
@@ -14,14 +13,33 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-/*app.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + '/client/index.html');
 });
 
-app.get('/film', (req, res) => {
-  res.send(Films);
+app.get('/club', (req, res) => {
+  res.send(Clubs);
 });
 
+app.delete('/club/:id', (req, res) => {
+  let id = req.params.id;
+  console.log(id)
+  let index = _ld.findIndex(Clubs, (c) => {
+    return c.id == id;
+  });
+  Clubs.splice(index, 1);
+  res.sendStatus(200);
+});
+
+app.get('/club/:id', (req, res) => {
+  let id = req.params.id;
+  let club = _ld.find(Clubs, (o) => {
+    return o._id == id;
+  });
+  res.send(club);
+});
+
+/*
 app.get('/film/:id', (req, res) => {
   let id = req.params.id;
   let film = _.find(Films, (o) => {
