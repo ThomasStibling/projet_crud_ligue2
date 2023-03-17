@@ -12,6 +12,7 @@
     "express": "^4.18.2",
     "loaddash": "^0.0.1-security",
     "lodash": "^4.17.21",
-    "nodemon": "^2.0.21"
+    "nodemon": "^2.0.21",
+    "uuidv4": "^6.2.13"
   }
 }

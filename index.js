@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const { v4: uuidv4 } = require('uuid');
 
 let port = 3000;
 const Clubs = require('./data/clubs');
@@ -44,8 +45,15 @@ app.put('/club/:id', (req, res) => {
   let index = _ld.findIndex(Clubs, (o) => {
     return o.id == id;
   });
-  // console.log(req.body)
   Clubs[index] = req.body;
-  // console.log(Films[index])
   res.sendStatus(200);
 });
+
+app.post('/club', (req, res) => {
+  let newClub = req.body;
+  newClub.id = uuidv4();
+  Clubs.push(newClub);
+  res.sendStatus(200);
+});
+
+

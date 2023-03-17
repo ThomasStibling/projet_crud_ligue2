@@ -23,6 +23,12 @@ export class ClubService {
           let clubName = document.createElement('tr');
           let clubCode = document.createElement('td');
           clubCode.innerText = elt.name;
+          //let clubLogo = document.createElement('td');
+          //clubLogo.innerHTML = "<img style='max-width: 40px; max-height: 40px' src='" + elt.logo +">";
+          let myLogo = document.createElement('img');
+          myLogo.src = elt.logo;
+          myLogo.height = 50;
+          myLogo.width =50;
           let clubModif = document.createElement('td');
           let myIcone = document.createElement('i');
           myIcone.classList.add('fas','fa-light', 'fa-circle-info');
@@ -44,6 +50,7 @@ export class ClubService {
           });
 
           target.appendChild(clubName);
+          clubName.appendChild(myLogo);
           clubName.appendChild(clubCode);
           clubName.appendChild(clubModif);
           clubName.appendChild(clubDelete);
@@ -121,6 +128,32 @@ export class ClubService {
           console.log('Réussi');
           console.log(id);
           location.reload();
+        }
+      })
+      .catch((error) => {
+        console.log(`Error : ${error}`);
+      });
+  }
+
+
+
+  add(club) {
+    let url = '/club';
+    let options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      cache: 'default',
+      body: JSON.stringify(club)
+    };
+
+    return fetch(url, options)
+      .then((res) => {
+        if(res.ok) {
+          console.log('reussi');
         }
       })
       .catch((error) => {
